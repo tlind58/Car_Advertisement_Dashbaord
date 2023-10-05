@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 
 #import data
-vehicles = pd.read_csv(r'C:\Users\treve\sprint5project\vehicles_us.csv')
+vehicles = pd.read_csv(r'C:\sprint5project\vehicles_us.csv')
 
 #split model into two new columns
 vehicles[['car_make', 'car_model']] = vehicles['model'].str.split(' ', n=1, expand=True)
