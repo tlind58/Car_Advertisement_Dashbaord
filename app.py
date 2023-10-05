@@ -12,7 +12,7 @@ vehicles[['car_make', 'car_model']] = vehicles['model'].str.split(' ', n=1, expa
 st.header('Days Listed from Car Advertisement')
 
 #histogram
-days_hist = px.histogram(filter_hist,x='days_listed',title='Days Listed Histogram')
+days_hist = px.histogram(vehicles,x='days_listed',title='Days Listed Histogram')
 st.plotly_chart(days_hist)
 
  #scatter
@@ -20,10 +20,10 @@ st.plotly_chart(days_hist)
 checkbox_scatter = st.checkbox('Chart Toggle')
 
 if checkbox_scatter:
-    px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='type')
+    price_scatter = px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='type')
     st.plotly_chart(price_scatter)
 else: 
-    px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='car_model')
+    price_scatter = px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='car_model')
     st.plotly_chart(price_scatter)
 
 
