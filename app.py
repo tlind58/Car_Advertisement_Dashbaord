@@ -23,7 +23,7 @@ if checkbox_scatter:
     price_scatter = px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='type')
     st.plotly_chart(price_scatter)
 else: 
-    price_scatter = px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='car_model')
+    price_scatter = px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='car_make')
     st.plotly_chart(price_scatter)
 
 
