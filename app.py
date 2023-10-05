@@ -17,7 +17,7 @@ st.plotly_chart(days_hist)
 
  #scatter
 
-checkbox_scatter = st.checkbox('Chart Toggle')
+checkbox_scatter = st.checkbox('Scatter Chart Toggle')
 
 if checkbox_scatter:
     price_scatter = px.scatter(vehicles,x='price',y='days_listed',title='Price vs Days Listed Scatter',color='type')
