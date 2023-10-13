@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import numpy as np
 
 #import data
 vehicles = pd.read_csv('vehicles_us.csv')
@@ -23,8 +24,8 @@ st.header('Days Listed from Car Advertisement for TOP 5 Car Makes and Types')
 four_wd_list = vehicles['is_4wd'].unique()
 four_wd = st.selectbox(
     label='Has 4wD',
-    options=four_wd_list
-    #index=four_wd_list.__index__(1.0)
+    options=four_wd_list,
+    index=four_wd_list.index
     )
 
 
