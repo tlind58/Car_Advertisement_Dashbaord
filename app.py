@@ -9,21 +9,36 @@ vehicles = pd.read_csv('vehicles_us.csv')
 #split model into two new columns
 vehicles[['car_make', 'car_model']] = vehicles['model'].str.split(' ', n=1, expand=True)
 
+#Fill Na with 0 for is_4wd
+vehicles['is_4wd'] = vehicles['is_4wd'].fillna(0)
 
-## create filtered data sets
 
-#top types filter
-vehicles['type'] = vehicles['type'].replace('pickup','truck')
-type_counts = vehicles['type'].value_counts().nlargest(5).index
-filtered_types = vehicles[vehicles["type"].isin(type_counts)]
-
-#top makes filter
-make_counts = vehicles['car_make'].value_counts().nlargest(5).index
-filtered_makes = vehicles[vehicles["car_make"].isin(make_counts)]
 
 st.header('Days Listed from Car Advertisement for TOP 5 Car Makes and Types')
 
-checkbox_chart = st.checkbox('Chart Toggle')
+## create filtered data sets
+
+
+#create filter for 4wd
+four_wd_list = vehicles['is_4wd'].unique()
+four_wd = st.selectbox(
+    label='Has 4wD',
+    options=four_wd_list
+    #index=four_wd_list.__index__(1.0)
+    )
+
+
+#top types filter
+#vehicles['type'] = vehicles['type'].replace('pickup','truck')  <-- commenting out
+type_counts = four_wd['type'].value_counts().nlargest(5).index
+filtered_types = four_wd[four_wd["type"].isin(type_counts)]
+
+#top makes filter
+make_counts = four_wd['car_make'].value_counts().nlargest(5).index
+filtered_makes = four_wd[four_wd["car_make"].isin(make_counts)]
+
+
+checkbox_chart = st.checkbox('Car Type Charts')
 
 if checkbox_chart:
 #type charts
