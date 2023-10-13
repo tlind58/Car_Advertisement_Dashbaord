@@ -24,7 +24,8 @@ st.header('Days Listed from Car Advertisement for TOP 5 Car Makes and Types')
 four_wd_list = vehicles['is_4wd'].unique()
 four_wd = st.selectbox(
     label='Has 4wD',
-    options=four_wd_list
+    options=four_wd_list,
+    index=four_wd_list.index(1.0)
     )
 
 mask_filter = vehicles['is_4wd'] = four_wd
