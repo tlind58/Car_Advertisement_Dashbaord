@@ -25,7 +25,7 @@ four_wd_list = vehicles['is_4wd'].unique()
 four_wd = st.selectbox(
     label='Has 4wD',
     options=four_wd_list,
-    index=four_wd_list.index('1.0')
+    index=four_wd_list
     )
 
 mask_filter = vehicles['is_4wd'] = four_wd
