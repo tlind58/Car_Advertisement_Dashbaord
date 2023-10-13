@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import numpy as np
+
 
 #import data
 vehicles = pd.read_csv('vehicles_us.csv')
@@ -24,19 +24,21 @@ st.header('Days Listed from Car Advertisement for TOP 5 Car Makes and Types')
 four_wd_list = vehicles['is_4wd'].unique()
 four_wd = st.selectbox(
     label='Has 4wD',
-    options=four_wd_list,
-    index=four_wd_list.index
+    options=four_wd_list
     )
+
+mask_filter = vehicles['is_4wd'] = four_wd
+vehicles_filtered = vehicles[mask_filter]
 
 
 #top types filter
 #vehicles['type'] = vehicles['type'].replace('pickup','truck')  <-- commenting out
-type_counts = four_wd['type'].value_counts().nlargest(5).index
-filtered_types = four_wd[four_wd["type"].isin(type_counts)]
+type_counts = vehicles_filtered['type'].value_counts().nlargest(5).index
+filtered_types = vehicles_filtered[vehicles_filtered["type"].isin(type_counts)]
 
 #top makes filter
-make_counts = four_wd['car_make'].value_counts().nlargest(5).index
-filtered_makes = four_wd[four_wd["car_make"].isin(make_counts)]
+make_counts = vehicles_filtered['car_make'].value_counts().nlargest(5).index
+filtered_makes = vehicles_filtered[vehicles_filtered["car_make"].isin(make_counts)]
 
 
 checkbox_chart = st.checkbox('Car Type Charts')
