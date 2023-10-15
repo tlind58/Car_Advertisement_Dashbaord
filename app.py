@@ -27,7 +27,7 @@ four_wd = st.selectbox(
     options=four_wd_list
     )
 
-mask_filter = vehicles['is_4wd'] = four_wd
+mask_filter = (vehicles['is_4wd'] == four_wd)
 vehicles_filtered = vehicles[mask_filter]
 
 
