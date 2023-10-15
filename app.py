@@ -34,11 +34,11 @@ vehicles_filtered = vehicles[mask_filter]
 
 #top types filter
 #vehicles['type'] = vehicles['type'].replace('pickup','truck')  <-- commenting out
-type_counts = vehicles_filtered['type'].value_counts().nlargest(5).index
+type_counts = vehicles_filtered['type'].value_counts().nlargest(5)
 filtered_types = vehicles_filtered[vehicles_filtered["type"].isin(type_counts)]
 
 #top makes filter
-make_counts = vehicles_filtered['car_make'].value_counts().nlargest(5).index
+make_counts = vehicles_filtered['car_make'].value_counts().nlargest(5)
 filtered_makes = vehicles_filtered[vehicles_filtered["car_make"].isin(make_counts)]
 
 
