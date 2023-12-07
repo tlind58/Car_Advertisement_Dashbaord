@@ -1,4 +1,4 @@
-# Car Adervertisement Dashboard
+# Car Advertisement Dashboard
 
 This project is taking US car advertisement data and looking at aspects of the amount of the time the cars stay listed along with their price and make.
 
